@@ -3,6 +3,7 @@
     color: black;
     position: absolute;
     visibility: hidden;
+    font-size: 1rem;
     z-index: 500;
     top: 0;
     left: 0;

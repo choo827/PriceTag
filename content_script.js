@@ -4,7 +4,7 @@ document.body.appendChild(bubbleDOM);
 
 document.addEventListener('mouseup', function (e) {
     const sel = window.getSelection().toString();
-    const filtered_sel = sel.trim();
+    const filtered_sel = sel.trim().match(/[0-9,.]+/g);
     if (filtered_sel != '') {
         console.log(filtered_sel.toString());
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
