@@ -6,9 +6,18 @@ const save_options = () => {
         // Update status to let user know options were saved.
         const status = document.getElementById('status');
         status.textContent = 'Options saved.';
-        setTimeout( () => {
+        setTimeout(() => {
             status.textContent = '';
         }, 750);
     });
+
+    chrome.storage.sync.get((data) => {
+        document.getElementById('current-currency').innerHTML = data.defaultCurrency;
+    });
 };
+
+chrome.storage.sync.get((data) => {
+    document.getElementById('current-currency').innerHTML = data.defaultCurrency;
+});
+
 document.getElementById('save').addEventListener('click', save_options);
