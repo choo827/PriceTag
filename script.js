@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function convertCur() {
+const convertCur = () => {
     let myBase;
     chrome.storage.sync.get((item) => {
         myBase = item.defaultCurrency;
@@ -37,7 +37,7 @@ function convertCur() {
                     .textContent = convertPrice.toLocaleString()
             })
         }).catch(err => console.log(err));
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const options = document.getElementById('go-to-options');
