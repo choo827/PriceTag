@@ -1,0 +1,101 @@
+@import url('https://rsms.me/inter/inter.css');
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.insert-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.exchange-wrapper {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    color: #333333;
+    font-size: 1.5rem;
+}
+
+.form-element {
+    margin-bottom: 8px;
+    position: relative;
+    display: block;
+}
+
+.form-icon {
+    position: absolute;
+    width: 20px;
+    display: block;
+    pointer-events: none;
+    color: #888;
+    right: 4px;
+    font-size: 21px;
+    font-weight: 300;
+    top: 0.5rem;
+    line-height: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#selCur {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background: hsla(0, 0%, 100%, .8);
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    background-clip: padding-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    min-height: 32px;
+}
+.exchange-container {
+    display: flex;
+    padding-bottom: 16px;
+}
+#exchange {
+    margin: 16px;
+    display: flex;
+}
+
+#price {
+    width: 256px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: #333;
+    background: hsla(0, 0%, 100%, .8);
+    border: 1px solid #aaaaaa;
+}
+
+input::placeholder {
+    font-family: 'Inter', sans-serif;
+    color: #aaaaaa;
+}
+
+#go-to-options {
+    width: 20px;
+}
+
+.exchage-currency {
+    padding-right: 8px;
+}

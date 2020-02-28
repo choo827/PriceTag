@@ -2,25 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
     <script src="script.js"></script>
 </head>
 <body>
-<div class="exchange-wrapper">
-    <select id="selCur" name="currency">
-        <option value="EUR">EUR (€)</option>
-        <option value="USD">USD ($)</option>
-        <option value="GBP">GBP (£)</option>
-        <option value="JPY">JPY (￥)</option>
-        <option value="KRW">KRW (₩)</option>
-    </select>
-    <input type="number" id="price">
-    <input id="exchange" type="button" value="Exchange">
+<header>
+    <div id="go-to-options">
+        <img src="./images/cog.svg">
+    </div>
+</header>
+<div class="exchange-container">
+    <div class="insert-wrapper">
+        <div class="form-element">
+            <select id="selCur" name="currency">
+                <option selected value="EUR">EUR (€)</option>
+                <option value="USD">USD ($)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="JPY">JPY (¥)</option>
+                <option value="KRW">KRW (₩)</option>
+            </select>
+            <span class="form-icon" aria-hidden="true"><img src="./images/angle-down.svg"></span>
+        </div>
+        <input autofocus placeholder="Enter the price you want to exchange." type="number" id="price">
+    </div>
+    <div id="exchange">
+        <img src="./images/ic_exchange.svg">
+    </div>
 </div>
 <div class="exchange-wrapper">
-    <span id="exchange-currency">KRW</span>
+    <span id="exchange-currency" class="exchage-currency">KRW</span>
     <span id="result"></span>
 </div>
-<button id="go-to-options">Go to options</button>
 </body>
 </html>
