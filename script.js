@@ -17,7 +17,9 @@ chrome.storage.sync.get((data) => {
 document.addEventListener('DOMContentLoaded', () => {
     const exchange = document.getElementById('exchange');
     exchange.addEventListener('click', () => {
-        convertCur()
+        document.getElementById('exchange-wrapper').style.display = 'flex';
+        document.getElementById('exchange-wrapper').classList.add('animated')
+        convertCur();
     });
 });
 

@@ -19,7 +19,7 @@ header {
 }
 
 .exchange-wrapper {
-    display: flex;
+    display: none;
     flex-direction: row;
     font-weight: bold;
     color: #333333;
@@ -98,4 +98,13 @@ input::placeholder {
 
 .exchage-currency {
     padding-right: 8px;
+}
+
+@-webkit-keyframes slide-down {
+    0% { opacity: 0; -webkit-transform: translateY(-100%); }
+    100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+
+.exchange-wrapper.animated {
+    animation: slide-down 0.3s ease-out;
 }
