@@ -21,8 +21,9 @@ bubbleDOM.appendChild(exPrice);
 
 document.addEventListener('mouseup', function (e) {
     const sel = window.getSelection().toString();
-    const filtered_sel = sel.trim().match(/([£€$￥₩][0-9,.]*)/g).toString();
-    console.log(filtered_sel.toString());
+    console.log('sel: ' + sel);
+    const filtered_sel = sel.trim().match(/([£€$￥₩]\s{0,}[0-9,.]*)/g).toString().replace(/(\s*)/g, "");
+    console.log('filtered_sel: ' + filtered_sel);
     if (filtered_sel != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
         const relative = document.body.parentNode.getBoundingClientRect();
