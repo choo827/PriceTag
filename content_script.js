@@ -22,7 +22,7 @@ bubbleDOM.appendChild(exPrice);
 document.addEventListener('mouseup', function (e) {
     const sel = window.getSelection().toString();
     console.log('sel: ' + sel);
-    const filtered_sel = sel.trim().match(/([£€$￥₩]\s{0,}[0-9,.]*)/g).toString().replace(/(\s*)/g, "");
+    const filtered_sel = sel.trim().match(/([£€$￥¥₩]\s{0,}[0-9,.]*)/g).toString().replace(/(\s*)/g, "");
     console.log('filtered_sel: ' + filtered_sel);
     if (filtered_sel != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
@@ -37,7 +37,7 @@ document.addEventListener('mouseup', function (e) {
             filteredCurrency = 'EUR';
         } else if (filtered_sel.charAt(0) === '$') {
             filteredCurrency = 'USD';
-        } else if (filtered_sel.charAt(0) === '￥') {
+        } else if (filtered_sel.charAt(0) === '￥'||'¥') {
             filteredCurrency = 'JPY';
         } else {
             filteredCurrency = 'KRW';
