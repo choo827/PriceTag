@@ -31,20 +31,20 @@ document.addEventListener('mouseup', function (e) {
         bubbleDOM.style.left = e.clientX + 'px';
 
         let filteredCurrency;
-        if (filtered_sel.charAt(0) === '£') {
+        if (filtered_sel.charAt(0) == '£') {
             filteredCurrency = 'GBP';
-        } else if (filtered_sel.charAt(0) === '€') {
+        } else if (filtered_sel.charAt(0) == '€') {
             filteredCurrency = 'EUR';
-        } else if (filtered_sel.charAt(0) === '$') {
+        } else if (filtered_sel.charAt(0) == '$') {
             filteredCurrency = 'USD';
-        } else if (filtered_sel.charAt(0) === '￥'||'¥') {
+        } else if (filtered_sel.charAt(0) == ('￥' || '¥')) {
             filteredCurrency = 'JPY';
-        } else {
+        } else if (filtered_sel.charAt(0) == '₩') {
             filteredCurrency = 'KRW';
         }
 
         dragCurrency.innerHTML = filteredCurrency;
-        dragPrice.innerHTML = filtered_sel;
+        dragPrice.innerHTML = filtered_sel.substring(1);
 
         chrome.storage.sync.get((item) => {
             exCurrency.innerHTML = item.defaultCurrency;

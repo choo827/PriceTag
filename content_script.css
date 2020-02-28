@@ -1,14 +1,35 @@
 #selection_bubble {
-    padding: 0.5rem;
-    color: black;
+    padding: 16px;
+    color: #111111;
     position: absolute;
     visibility: hidden;
-    font-size: 1rem;
-    z-index: 500;
+    z-index: 2147483647;
     top: 0;
     left: 0;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     background: #ffffff;
     box-sizing: border-box;
-    box-shadow: 0 0.25rem 0.25rem #dddddd;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07);
+    font-size: 16px;
+    font-family: sans-serif;
+    font-style: normal;
+}
+#drag-currency {
+    /*padding-bottom: 8px;*/
+    color: #aaaaaa;
+}
+
+#drag-price {
+    padding-bottom: 8px;
+    font-weight: bold;
+    font-size: 22px;
+}
+#ex-currency {
+    /*padding-bottom: 8px;*/
+    color: #aaaaaa;
+}
+
+#ex-price {
+    font-size: 22px;
+    font-weight: bold;
 }
