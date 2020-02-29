@@ -62,9 +62,36 @@ body {
 
 .sub-heading {
     font-size: 1.25rem;
+    padding-right: 1rem;
 }
 
 .my-currency {
     font-size: 1rem;
     font-weight: bold;
+}
+
+#status {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+}
+
+.check-wrapper {
+    display: flex;
+    align-items: flex-end;
+}
+
+.check-icon {
+    width: 20px;
+}
+
+.status-wrpper {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #3D9970;
+}
+
+.currency-wrapper {
+    display: flex;
+    justify-content: space-between;
 }

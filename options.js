@@ -4,11 +4,10 @@ const save_options = () => {
         defaultCurrency: currency
     }, () => {
         // Update status to let user know options were saved.
-        const status = document.getElementById('status');
-        status.textContent = 'Options saved.';
+        document.getElementById('status').style.display = 'flex';
         setTimeout(() => {
-            status.textContent = '';
-        }, 750);
+            document.getElementById('status').style.display = 'none';
+        }, 1000);
     });
 };
 
