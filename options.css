@@ -1,0 +1,70 @@
+@import url('https://rsms.me/inter/inter.css');
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+}
+
+.option-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 40px auto 20px;
+    padding: 2rem;
+    width: 512px;
+}
+
+.heading {
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #333333;
+}
+
+.select-currency {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background: hsla(0, 0%, 100%, .8);
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    background-clip: padding-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    min-height: 32px;
+}
+
+.form-icon {
+    position: absolute;
+    width: 20px;
+    display: block;
+    pointer-events: none;
+    right: 4px;
+    font-size: 21px;
+    font-weight: 300;
+    top: 0.5rem;
+    line-height: 0;
+}
+
+.form-element {
+    margin-bottom: 8px;
+    position: relative;
+    display: block;
+}
+
+.sub-heading {
+    font-size: 1.25rem;
+}
+
+.my-currency {
+    font-size: 1rem;
+    font-weight: bold;
+}

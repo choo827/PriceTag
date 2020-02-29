@@ -10,14 +10,13 @@ const save_options = () => {
             status.textContent = '';
         }, 750);
     });
-
-    chrome.storage.sync.get((data) => {
-        document.getElementById('current-currency').innerHTML = data.defaultCurrency;
-    });
 };
 
 chrome.storage.sync.get((data) => {
-    document.getElementById('current-currency').innerHTML = data.defaultCurrency;
+    document.getElementById("currency").value = data.defaultCurrency;
 });
 
-document.getElementById('save').addEventListener('click', save_options);
+const e = document.getElementById("currency");
+e.addEventListener('change', () => {
+    save_options();
+});

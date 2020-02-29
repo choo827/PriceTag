@@ -2,7 +2,7 @@
 
 #selection_bubble {
     padding: 16px;
-    color: #111111;
+    color: #333333;
     position: absolute;
     visibility: hidden;
     z-index: 2147483647;
