@@ -11,26 +11,37 @@
     border-radius: 8px;
     background: #ffffff;
     box-sizing: border-box;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07);
-    font-size: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+    font-size: 16px;
     font-family: 'Inter', sans-serif;
 }
+
 #drag-currency {
-    padding-bottom: 8px;
+    margin-bottom: 7px;
     color: #aaaaaa;
+    font-weight: 400;
+    max-height: 32px;
+    height: 32px;
 }
 
 #drag-price {
-    padding-bottom: 16px;
+    margin-bottom: 16px;
     font-weight: bold;
     font-size: 18px;
+    height: 32px;
+    max-height: 32px;
 }
+
 #ex-currency {
-    padding-bottom: 8px;
+    margin-bottom: 7px;
     color: #aaaaaa;
+    font-weight: 400;
+    height: 32px;
+    max-height: 32px;
 }
 
 #ex-price {
     font-size: 18px;
     font-weight: bold;
+    height: 32px;
 }

@@ -1,7 +1,7 @@
 {
   "name": "PriceTag",
   "description": "You can easily convert another currency into your own currency.",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "popup.html",
