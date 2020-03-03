@@ -28,7 +28,7 @@ header {
 }
 
 .form-element {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     position: relative;
     display: block;
 }
@@ -58,14 +58,14 @@ input[type="number"]::-webkit-inner-spin-button {
     font-weight: bold;
     font-family: 'Inter', sans-serif;
     color: #333;
-    background: hsla(0, 0%, 100%, .8);
-    border: 1px solid #aaaaaa;
-    border-radius: 4px;
-    background-clip: padding-box;
+    box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border-radius: 8px;
     appearance: none;
     min-height: 32px;
+    border: 0;
+    box-shadow: 6px 6px 16px 0 rgba(209, 205, 199, .5), -6px -6px 16px 0 rgba(255, 255, 255, .5);
 }
 
 .exchange-container {
@@ -82,10 +82,11 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 14px;
     font-family: 'Inter', sans-serif;
     padding: 0.5rem;
-    border-radius: 4px;
+    border-radius: 8px;
     color: #333;
-    background: hsla(0, 0%, 100%, .8);
-    border: 1px solid #aaaaaa;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    box-shadow: inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5);
 }
 
 input::placeholder {
