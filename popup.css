@@ -6,16 +6,12 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
+    background: #f1f3f6;
 }
 
 header {
     display: flex;
     justify-content: flex-end;
-}
-
-.insert-wrapper {
-    display: flex;
-    flex-direction: column;
 }
 
 .exchange-wrapper {
@@ -28,9 +24,8 @@ header {
 }
 
 .form-element {
-    margin-bottom: 16px;
     position: relative;
-    display: block;
+    display: flex;
 }
 
 .form-icon {
@@ -52,7 +47,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #selCur {
-    width: 100%;
+    text-align: center;
+    text-align-last: center;
+    margin-right: 1rem;
     padding: 0.5rem;
     font-size: 16px;
     font-weight: bold;
@@ -64,6 +61,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 8px;
     appearance: none;
     min-height: 32px;
+    background: transparent;
     border: 0;
     box-shadow: 6px 6px 16px 0 rgba(209, 205, 199, .5), -6px -6px 16px 0 rgba(255, 255, 255, .5);
 }
@@ -79,6 +77,9 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 0.5rem;
     border-radius: 8px;
     box-shadow: 6px 6px 16px 0 rgba(209, 205, 199, .5), -6px -6px 16px 0 rgba(255, 255, 255, .5);
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #price {
@@ -88,8 +89,8 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 0.5rem;
     border-radius: 8px;
     color: #333;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-sizing: border-box;
+    border: none;
+    background: transparent;
     box-shadow: inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5);
 }
 

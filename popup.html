@@ -8,21 +8,18 @@
 <body>
 <div class="container">
     <div class="exchange-container">
-        <div class="insert-wrapper">
-            <div class="form-element">
-                <select id="selCur" name="currency">
-                    <option selected value="EUR">EUR (€)</option>
-                    <option value="USD">USD ($)</option>
-                    <option value="GBP">GBP (£)</option>
-                    <option value="JPY">JPY (¥)</option>
-                    <option value="KRW">KRW (₩)</option>
-                </select>
-                <span class="form-icon" aria-hidden="true"><img src="./images/angle-down.svg"></span>
-            </div>
+        <div class="form-element">
+            <select id="selCur" dir="auto" name="currency">
+                <option class="options" selected value="EUR">€</option>
+                <option class="options" value="USD">$</option>
+                <option class="options" value="GBP">£</option>
+                <option class="options" value="JPY">¥</option>
+                <option class="options" value="KRW">₩</option>
+            </select>
             <input autofocus placeholder="Enter the price to exchange." type="number" id="price">
-        </div>
-        <div id="exchange">
-            <img src="./images/ic_exchange.svg">
+            <div id="exchange">
+                <img src="./images/ic_exchange.svg">
+            </div>
         </div>
     </div>
     <div id="exchange-wrapper" class="exchange-wrapper">
