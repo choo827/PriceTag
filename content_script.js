@@ -49,8 +49,7 @@ document.addEventListener('mouseup', function (e) {
         chrome.storage.sync.get((item) => {
             exCurrency.innerHTML = item.defaultCurrency;
         });
-        console.log('removeComma ' + removeComma(filtered_sel.substring(1)));
-        convertCur(removeComma(filtered_sel.substring(1)), filteredCurrency);
+        convertCur(filtered_sel.substring(1).replace(",", ""), filteredCurrency);
 
         bubbleDOM.style.visibility = 'visible';
         bubbleDOM.style.position = "absolute";
@@ -81,7 +80,4 @@ const convertCur = (price, currency) => {
         }).catch(err => console.log(err));
 };
 
-const removeComma = (str) => {
-    n = parseInt(str.replace(/,/g, ""));
-    return n;
-};
+// ([£€$￥¥₩]\s{0,}[0-9,.]*)|([0-9,.]*[€원])
