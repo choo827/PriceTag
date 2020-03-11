@@ -12,6 +12,8 @@
 - JavaScript
 - Chrome Extension Api
 - Neumorphism design
+- Conventional Commits
 
 ## 🔭 참고한 사이트
 - 🚮 아이콘: [Unicons icons](https://iconscout.com/unicons)
+- 💬 커밋 메시지: [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0-beta.4/)
