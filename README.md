@@ -6,7 +6,8 @@
 2020.02.21 ~ 
 
 ## ⛳️ 목표
-크롬 웹 스토어에 올리는 것 
+- [x] 크롬 웹 스토어 등록
+- [ ] 사용자 100명 만들기
 
 ## 🔬 알게된 것
 - JavaScript
@@ -17,3 +18,6 @@
 ## 🔭 참고한 사이트
 - 🚮 아이콘: [Unicons icons](https://iconscout.com/unicons)
 - 💬 커밋 메시지: [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0-beta.4/)
+
+## 🖥 Download
+<a href='https://chrome.google.com/webstore/detail/pricetag/cgpaenefnoalohncgpccibllnlhlmlag?utm_source=chrome-ntp-icon'><img alt='Get it on Google Play' src='https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png' width="206px"/></a>
