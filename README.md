@@ -18,6 +18,7 @@
 ## 🔭 참고한 사이트
 - 🚮 아이콘: [Unicons icons](https://iconscout.com/unicons)
 - 💬 커밋 메시지: [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0-beta.4/)
+- 💵 환전 API: [exchangeratesapi](https://exchangeratesapi.io/)
 
 ## 🖥 Download
 <a href='https://chrome.google.com/webstore/detail/pricetag/cgpaenefnoalohncgpccibllnlhlmlag?utm_source=chrome-ntp-icon'><img alt='Get it on Google Play' src='https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_496x150.png' width="206px"/></a>
