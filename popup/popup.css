@@ -80,6 +80,7 @@ input[type="number"]::-webkit-inner-spin-button {
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
+    cursor: pointer;
 }
 
 #price {
@@ -90,6 +91,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 8px;
     color: #333;
     border: none;
+    cursor: text;
     background: transparent;
     box-shadow: inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5);
 }
