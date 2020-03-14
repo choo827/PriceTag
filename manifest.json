@@ -1,11 +1,11 @@
 {
   "name": "PriceTag",
   "description": "You can easily convert another currency into your own currency.",
-  "version": "0.2",
+  "version": "0.3",
   "manifest_version": 2,
   "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon.png"
+    "default_popup": "./popup/popup.html",
+    "default_icon": "./icon/icon.png"
   },
   "permissions": [
     "storage"
@@ -17,10 +17,10 @@
     "matches": [ "http://*/*", "https://*/*" ],
     "run_at": "document_end"
   } ],
-  "options_page": "options.html",
+  "options_page": "./options/options.html",
   "icons": {
-    "16": "icon16.ico",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "./icon/icon16.ico",
+    "48": "./icon/icon48.png",
+    "128": "./icon/icon128.png"
   }
 }
