@@ -16,6 +16,7 @@
 - Conventional Commits
 
 ## 🔭 참고한 사이트
+- 🔤 폰트: [Inter](https://rsms.me/inter/)
 - 🚮 아이콘: [Unicons icons](https://iconscout.com/unicons)
 - 💬 커밋 메시지: [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0-beta.4/)
 - 💵 환전 API: [exchangeratesapi](https://exchangeratesapi.io/)
