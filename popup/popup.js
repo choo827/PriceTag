@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('price').onkeypress = (event) => {
+        if(event.keyCode == 13){
+            document.getElementById('exchange-wrapper').style.display = 'flex';
+            document.getElementById('exchange-wrapper').classList.add('animated');
+            convertCur();
+
+            exchange.style.boxShadow = 'inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5)';
+            setTimeout(function () {
+                exchange.style.boxShadow = " 6px 6px 16px 0 rgba(209, 205, 199, .5),-6px -6px 16px 0 rgba(255, 255, 255, .5)"
+            }, 250);
+        }
+    }
+});
+
+
 const convertCur = () => {
     let myBase;
     chrome.storage.sync.get((item) => {
