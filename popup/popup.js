@@ -1,70 +1,34 @@
-let dataURL = "https://api.exchangeratesapi.io/latest";
+let dataURL = "https://api.exchangeratesapi.io/latest?base=EUR";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const e = document.getElementById("selCur");
-    e.addEventListener('change', () => {
-        const selectedVal = e.options[e.selectedIndex].value;
-        dataURL = 'https://api.exchangeratesapi.io/latest?base=' + selectedVal;
-    });
-});
-
-
-chrome.storage.sync.get((data) => {
-    document.getElementById('exchange-currency').innerText = data.defaultCurrency;
-    dataURL = 'https://api.exchangeratesapi.io/latest?base=' + data.defaultCurrency;
-});
-
-document.addEventListener('DOMContentLoaded', () => {
+    const selCurrency = document.getElementById("selCur");
+    const price = document.getElementById('price');
     const exchange = document.getElementById('exchange');
-    exchange.addEventListener('click', () => {
-        document.getElementById('exchange-wrapper').style.display = 'flex';
-        document.getElementById('exchange-wrapper').classList.add('animated');
-        convertCur();
 
-        exchange.style.boxShadow = 'inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5)';
-        setTimeout(function () {
-            exchange.style.boxShadow = " 6px 6px 16px 0 rgba(209, 205, 199, .5),-6px -6px 16px 0 rgba(255, 255, 255, .5)"
-        }, 250);
+    selCurrency.addEventListener('change', () => {
+        const selValue = selCurrency.options[selCurrency.selectedIndex].value;
+        dataURL = 'https://api.exchangeratesapi.io/latest?base=' + selValue;
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('price').onkeypress = (event) => {
+    // 환전 버튼 눌러 결과
+    exchange.addEventListener('click', () => {
+        showResult('exchange-wrapper');
+        convertCur(price);
+        clickExAnim(exchange, 250);
+    });
+
+    // 엔터키 눌러 결과
+    price.onkeypress = (event) => {
         if (event.keyCode == 13) {
-            document.getElementById('exchange-wrapper').style.display = 'flex';
-            document.getElementById('exchange-wrapper').classList.add('animated');
-            convertCur();
-
-            exchange.style.boxShadow = 'inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5)';
-            setTimeout(function () {
-                exchange.style.boxShadow = " 6px 6px 16px 0 rgba(209, 205, 199, .5),-6px -6px 16px 0 rgba(255, 255, 255, .5)"
-            }, 250);
+            showResult('exchange-wrapper');
+            convertCur(price);
+            clickExAnim(exchange, 250);
         } else {
             return true;
         }
-    }
-});
+    };
 
-
-const convertCur = () => {
-    let myBase;
-    chrome.storage.sync.get((item) => {
-        myBase = item.defaultCurrency;
-    });
-
-    const price = document.getElementById('price').value;
-    fetch(dataURL)
-        .then((res) => {
-            res.json().then(data => {
-                const base = data.rates[myBase];
-                const convertPrice = base * price;
-                document.getElementById("result")
-                    .textContent = convertPrice.toLocaleString()
-            })
-        }).catch(err => console.log(err));
-};
-
-document.addEventListener('DOMContentLoaded', () => {
+    // 옵션창
     const options = document.getElementById('go-to-options');
     options.addEventListener('click', () => {
         if (chrome.runtime.openOptionsPage) {
@@ -74,3 +38,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+chrome.storage.sync.get((data) => {
+    const exCurrency = document.getElementById('exchange-currency');
+    exCurrency.innerText = data.defaultCurrency;
+});
+
+const showResult = (element) => {
+    document.getElementById(element).style.display = 'flex';
+    document.getElementById(element).classList.add('animated');
+};
+
+const clickExAnim = (element, time) => {
+    element.style.boxShadow = 'inset -6px -6px 16px 0 rgba(255, 255, 255, .5), inset 6px 6px 16px 0 rgba(209, 205, 199, .5)';
+    setTimeout(() => {
+        element.style.boxShadow = " 6px 6px 16px 0 rgba(209, 205, 199, .5),-6px -6px 16px 0 rgba(255, 255, 255, .5)";
+    }, time);
+};
+
+const convertCur = (price) => {
+    const result = document.getElementById("result");
+    let myBase;
+    chrome.storage.sync.get((item) => {
+        myBase = item.defaultCurrency;
+    });
+    fetch(dataURL)
+        .then((res) => {
+            res.json().then(data => {
+                const convertPrice = data.rates[myBase] * price.value;
+                result.textContent = convertPrice.toLocaleString()
+            })
+        }).catch(err => console.log(err));
+};
