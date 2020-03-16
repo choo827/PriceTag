@@ -20,42 +20,27 @@ bubbleDOM.appendChild(exPrice);
 
 
 document.addEventListener('mouseup', function (e) {
-    const sel = window.getSelection().toString();
-    const filtered_sel = sel.trim()
-        .match(/([£€$￥¥₩]\s{0,}[0-9,.]*)/g)
-        .toString().replace(/(\s*)/g, "");
-    if (filtered_sel != '') {
+    const select = window.getSelection().toString();
+    console.log(select);
+
+    const condition = /([£€$￥¥₩]\s{0,}[0-9,.]*)/g;
+    const filteredSelect = filtering(select, condition);
+    console.log("filteredSelect: " + filteredSelect);
+
+    if (filteredSelect != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
         const relative = document.body.parentNode.getBoundingClientRect();
         bubbleDOM.style.top = (r.bottom - relative.top) + 'px'; //this will place ele below the selection
         bubbleDOM.style.left = e.clientX + 'px';
-
-        let filteredCurrency;
-        switch (filtered_sel.charAt(0)) {
-            case '£':
-                filteredCurrency = 'GBP';
-                break;
-            case '€':
-                filteredCurrency = 'EUR';
-                break;
-            case '$':
-                filteredCurrency = 'USD';
-                break;
-            case ('￥' || '¥'):
-                filteredCurrency = 'JPY';
-                break;
-            case '₩':
-                filteredCurrency = 'KRW';
-                break;
-        }
-
-        dragCurrency.innerHTML = filteredCurrency;
-        dragPrice.innerHTML = filtered_sel.substring(1);
+        const currency = findCurrency(filteredSelect.charAt(0));
+        dragCurrency.innerHTML = currency;
+        dragPrice.innerHTML = filteredSelect.substring(1);
 
         chrome.storage.sync.get((item) => {
             exCurrency.innerHTML = item.defaultCurrency;
         });
-        convertCur(filtered_sel.substring(1).replace(",", ""), filteredCurrency);
+        convertCur(filteredSelect.substring(1)
+            .replace(",", ""), currency);
 
         bubbleDOM.style.visibility = 'visible';
         bubbleDOM.style.position = "absolute";
@@ -67,6 +52,29 @@ document.addEventListener('mouseup', function (e) {
 document.addEventListener('mousedown', function () {
     bubbleDOM.style.visibility = 'hidden';
 });
+
+const findCurrency = (rawPrice) => {
+    switch (rawPrice) {
+        case '£':
+            return 'GBP';
+        case '€':
+            return 'EUR';
+        case '$':
+            return 'USD';
+        case ('￥' || '¥'):
+            return 'JPY';
+        case '₩':
+            return 'KRW';
+    }
+};
+
+const filtering = (text, condition) => {
+    text.trim()
+        .match(condition).toString()
+        .replace(/(\s*)/g, "");
+
+    return text;
+};
 
 const convertCur = (price, currency) => {
     let myBase;
