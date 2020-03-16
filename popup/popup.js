@@ -12,19 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 환전 버튼 눌러 결과
     exchange.addEventListener('click', () => {
-        showResult('exchange-wrapper');
-        convertCur(price);
-        clickExAnim(exchange, 250);
+        if (price.value.length != 0) {
+            showResult('exchange-wrapper');
+            convertCur(price);
+            console.log("price" + price.value);
+            clickExAnim(exchange, 250);
+        }
     });
 
     // 엔터키 눌러 결과
     price.onkeypress = (event) => {
-        if (event.keyCode == 13) {
-            showResult('exchange-wrapper');
-            convertCur(price);
-            clickExAnim(exchange, 250);
-        } else {
-            return true;
+        if (price.value.length != 0) {
+            if (event.keyCode == 13) {
+                showResult('exchange-wrapper');
+                convertCur(price);
+                clickExAnim(exchange, 250);
+            } else {
+                return true;
+            }
         }
     };
 
