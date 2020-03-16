@@ -19,19 +19,16 @@ bubbleDOM.appendChild(exCurrency);
 bubbleDOM.appendChild(exPrice);
 
 
-document.addEventListener('mouseup', function (e) {
+document.addEventListener('mouseup',  (event) => {
     const select = window.getSelection().toString();
-    console.log(select);
-
     const condition = /([£€$￥¥₩]\s{0,}[0-9,.]*)/g;
     const filteredSelect = filtering(select, condition);
-    console.log("filteredSelect: " + filteredSelect);
 
     if (filteredSelect != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
         const relative = document.body.parentNode.getBoundingClientRect();
         bubbleDOM.style.top = (r.bottom - relative.top) + 'px'; //this will place ele below the selection
-        bubbleDOM.style.left = e.clientX + 'px';
+        bubbleDOM.style.left = event.clientX + 'px';
         const currency = findCurrency(filteredSelect.charAt(0));
         dragCurrency.innerHTML = currency;
         dragPrice.innerHTML = filteredSelect.substring(1);
@@ -49,7 +46,7 @@ document.addEventListener('mouseup', function (e) {
     }
 });
 
-document.addEventListener('mousedown', function () {
+document.addEventListener('mousedown', () => {
     bubbleDOM.style.visibility = 'hidden';
 });
 
