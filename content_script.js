@@ -21,26 +21,32 @@ bubbleDOM.appendChild(exPrice);
 
 document.addEventListener('mouseup', function (e) {
     const sel = window.getSelection().toString();
-    console.log('sel: ' + sel);
-    const filtered_sel = sel.trim().match(/([£€$￥¥₩]\s{0,}[0-9,.]*)/g).toString().replace(/(\s*)/g, "");
-    console.log('filtered_sel: ' + filtered_sel);
+    const filtered_sel = sel.trim()
+        .match(/([£€$￥¥₩]\s{0,}[0-9,.]*)/g)
+        .toString().replace(/(\s*)/g, "");
     if (filtered_sel != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
         const relative = document.body.parentNode.getBoundingClientRect();
-        bubbleDOM.style.top = (r.bottom - relative.top) + 'px';//this will place ele below the selection
+        bubbleDOM.style.top = (r.bottom - relative.top) + 'px'; //this will place ele below the selection
         bubbleDOM.style.left = e.clientX + 'px';
 
         let filteredCurrency;
-        if (filtered_sel.charAt(0) == '£') {
-            filteredCurrency = 'GBP';
-        } else if (filtered_sel.charAt(0) == '€') {
-            filteredCurrency = 'EUR';
-        } else if (filtered_sel.charAt(0) == '$') {
-            filteredCurrency = 'USD';
-        } else if (filtered_sel.charAt(0) == ('￥' || '¥')) {
-            filteredCurrency = 'JPY';
-        } else if (filtered_sel.charAt(0) == '₩') {
-            filteredCurrency = 'KRW';
+        switch (filtered_sel.charAt(0)) {
+            case '£':
+                filteredCurrency = 'GBP';
+                break;
+            case '€':
+                filteredCurrency = 'EUR';
+                break;
+            case '$':
+                filteredCurrency = 'USD';
+                break;
+            case ('￥' || '¥'):
+                filteredCurrency = 'JPY';
+                break;
+            case '₩':
+                filteredCurrency = 'KRW';
+                break;
         }
 
         dragCurrency.innerHTML = filteredCurrency;
@@ -69,7 +75,6 @@ const convertCur = (price, currency) => {
         dataURL = 'https://api.exchangeratesapi.io/latest?base=' + currency;
     });
 
-    // const price = document.getElementById('price').value;
     fetch(dataURL)
         .then((res) => {
             res.json().then(data => {
