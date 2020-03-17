@@ -70,19 +70,6 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
 }
 
-#exchange {
-    margin-left: 16px;
-    display: flex;
-    box-sizing: border-box;
-    padding: 0.5rem;
-    border-radius: 8px;
-    box-shadow: 6px 6px 16px 0 rgba(209, 205, 199, .5), -6px -6px 16px 0 rgba(255, 255, 255, .5);
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
-}
-
 #price {
     width: 256px;
     font-size: 14px;

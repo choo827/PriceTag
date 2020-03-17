@@ -3,21 +3,10 @@ let dataURL = "https://api.exchangeratesapi.io/latest?base=EUR";
 document.addEventListener('DOMContentLoaded', () => {
     const selCurrency = document.getElementById("selCur");
     const price = document.getElementById('price');
-    const exchange = document.getElementById('exchange');
 
     selCurrency.addEventListener('change', () => {
         const selValue = selCurrency.options[selCurrency.selectedIndex].value;
         dataURL = 'https://api.exchangeratesapi.io/latest?base=' + selValue;
-    });
-
-    // 환전 버튼 눌러 결과
-    exchange.addEventListener('click', () => {
-        if (price.value.length != 0) {
-            showResult('exchange-wrapper');
-            convertCur(price);
-            console.log("price" + price.value);
-            clickExAnim(exchange, 250);
-        }
     });
 
     // 엔터키 눌러 결과
