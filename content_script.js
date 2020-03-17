@@ -19,7 +19,7 @@ bubbleDOM.appendChild(exCurrency);
 bubbleDOM.appendChild(exPrice);
 
 
-document.addEventListener('mouseup',  (event) => {
+document.addEventListener('mouseup', (event) => {
     const select = window.getSelection().toString();
     const condition = /([£€$￥¥₩]\s{0,}[0-9,.]*)/g;
     const filteredSelect = filtering(select, condition);
@@ -58,7 +58,8 @@ const findCurrency = (rawPrice) => {
             return 'EUR';
         case '$':
             return 'USD';
-        case ('￥' || '¥'):
+        case '¥':
+        case '￥':
             return 'JPY';
         case '₩':
             return 'KRW';
