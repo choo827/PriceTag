@@ -1,4 +1,4 @@
-const save_options = () => {
+const saveOptions = () => {
     const currency = document.getElementById('currency').value;
     chrome.storage.sync.set({
         defaultCurrency: currency
@@ -17,5 +17,5 @@ chrome.storage.sync.get((data) => {
 
 const e = document.getElementById("currency");
 e.addEventListener('change', () => {
-    save_options();
+    saveOptions();
 });
