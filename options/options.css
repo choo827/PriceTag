@@ -96,3 +96,7 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+select:focus {
+    outline: none;
+}
