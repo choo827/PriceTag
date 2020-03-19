@@ -3,14 +3,14 @@
 body {
     font-family: 'Inter', sans-serif;
     color: #333333;
+    background: #0074D9;
 }
 
 .option-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #f1f3f6;
     border-radius: 8px;
     margin: 40px auto 20px;
     padding: 2rem;
@@ -27,19 +27,20 @@ body {
 
 .select-currency {
     width: 100%;
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 16px;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
     color: #333;
-    background: hsla(0, 0%, 100%, .8);
-    border: 1px solid #aaaaaa;
-    border-radius: 4px;
+    border-radius: 8px;
     background-clip: padding-box;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     min-height: 32px;
+    background: transparent;
+    border: 0;
+    box-shadow: 6px 6px 16px 0 rgba(209, 205, 199, .5), -6px -6px 16px 0 rgba(255, 255, 255, .5);
 }
 
 .form-icon {
@@ -47,10 +48,10 @@ body {
     width: 20px;
     display: block;
     pointer-events: none;
-    right: 4px;
+    right: 1rem;
     font-size: 21px;
     font-weight: 300;
-    top: 0.5rem;
+    top: 1rem;
     line-height: 0;
 }
 
