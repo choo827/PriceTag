@@ -1,5 +1,3 @@
-let dataURL;
-
 const bubbleDOM = document.createElement('div');
 const dragCurrency = document.createElement('div');
 const dragPrice = document.createElement('div');
@@ -22,7 +20,6 @@ bubbleDOM.appendChild(exPrice);
 document.addEventListener('mouseup', (event) => {
     const select = window.getSelection().toString();
     const filteredSelect = filtering(select);
-    console.log('filteredSelect: ' + filteredSelect);
 
     if (filteredSelect != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
@@ -36,13 +33,13 @@ document.addEventListener('mouseup', (event) => {
             currency = findCurrency(filteredSelect.substr(filteredSelect.length - 1));
             dragPrice.innerHTML = filteredSelect.slice(0, -1);
             convertCur(filteredSelect.slice(0, -1)
-                .replace(",", ""), currency);
+                .replace(/,/g, ""), currency);
         } else {
             // $10000
             currency = findCurrency(filteredSelect.charAt(0));
             dragPrice.innerHTML = filteredSelect.substring(1);
             convertCur(filteredSelect.substring(1)
-                .replace(",", ""), currency);
+                .replace(/,/g, ""), currency);
         }
         dragCurrency.innerHTML = currency;
 
@@ -87,17 +84,17 @@ const filtering = (text) => {
 };
 
 const convertCur = (price, currency) => {
+    const dataURL = 'https://api.exchangeratesapi.io/latest?base=' + currency;
     let myBase;
+
     chrome.storage.sync.get((item) => {
         myBase = item.defaultCurrency;
-        dataURL = 'https://api.exchangeratesapi.io/latest?base=' + currency;
     });
 
     fetch(dataURL)
         .then((res) => {
             res.json().then(data => {
-                const base = data.rates[myBase];
-                const convertPrice = base * price;
+                const convertPrice = data.rates[myBase] * price;
                 exPrice.innerHTML = convertPrice.toLocaleString()
             })
         }).catch(err => console.log(err));
