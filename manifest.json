@@ -1,6 +1,6 @@
 {
   "name": "PriceTag",
-  "description": "You can easily convert another currency into your own currency.",
+  "description": "You can easily exchange money while browsing the web.",
   "version": "0.3",
   "manifest_version": 2,
   "browser_action": {
