@@ -19,7 +19,8 @@ bubbleDOM.appendChild(exPrice);
 
 document.addEventListener('mouseup', (event) => {
     const select = window.getSelection().toString();
-    const filteredSelect = filtering(select);
+    const condition = /(^[£€$￥¥₩]\s*[0-9,.]*$)|(^[0-9,.]*[€원]$)/;
+    const filteredSelect = filtering(select, condition);
 
     if (filteredSelect != '') {
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
@@ -75,9 +76,9 @@ const findCurrency = (rawPrice) => {
     }
 };
 
-const filtering = (text) => {
+const filtering = (text, condition) => {
     text.trim()
-        .match(/([£€$￥¥₩]\s*[0-9,.]*)|([0-9,.]*[€원])/g).toString()
+        .match(condition).toString()
         .replace(/(\s*)/g, "");
 
     return text;
