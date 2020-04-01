@@ -8,32 +8,37 @@ document.addEventListener('mouseup', (event) => {
     const condition = /(^[£€$￥¥₩￦]\s*[0-9,.]*$)|(^[0-9,.]*[€원]$)/;
 
     if (select != ('' || undefined)) {
+        console.log(select.toString());
         const filteredSelect = filtering(select, condition);
 
-        // bubble position
-        // const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
-        // const relative = document.body.parentNode.getBoundingClientRect();
-        // bubbleDOM.style.top = (r.bottom - relative.top) + 'px'; //this will place ele below the selection
-        // bubbleDOM.style.left = event.clientX + 'px';
+        const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
+        const relative = document.body.parentNode.getBoundingClientRect();
+        const x = event.clientX + 'px';
 
-        let currency, dp, ep;
+        let currency, dp;
         if (filteredSelect.charAt(0).match(/[0-9]/g)) {
             // 1000원
             currency = findCurrency(filteredSelect.substr(filteredSelect.length - 1));
             dp = filteredSelect.slice(0, -1);
-            createBubble(currency, dp, myCurency, convertCur(filteredSelect.slice(0, -1)
-                .replace(/,/g, ""), currency));
+            convertCur(filteredSelect.slice(0, -1)
+                .replace(/,/g, ""), currency)
+                .then(data => {
+                    createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
+                    positionBubble(r, relative, x);
+                });
         } else {
             // $10000
             currency = findCurrency(filteredSelect.charAt(0));
             dp = filteredSelect.substring(1);
-
             convertCur(filteredSelect.substring(1)
                 .replace(/,/g, ""), currency)
                 .then(data => {
                     createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
+                    positionBubble(r, relative, x);
                 });
         }
+    } else {
+        removeBubble();
     }
 });
 
@@ -76,7 +81,7 @@ const convertCur = (price, currency) => {
     }).catch(err => console.log(err));
 };
 
-const createBubble = (_dc, _dp, _ec, _ep) => {
+const createBubble = (_dc, _dp, _ec, _ep,) => {
     const bubbleDOM = document.createElement('div');
     const dragCurrency = document.createElement('div');
     const dragPrice = document.createElement('div');
@@ -102,5 +107,14 @@ const createBubble = (_dc, _dp, _ec, _ep) => {
 };
 
 const removeBubble = () => {
-    document.getElementById('selection-bubble').remove();
+    const bubble = document.getElementById('selection-bubble');
+    if (bubble) {
+        bubble.remove();
+    }
+};
+
+const positionBubble = (_r, _relative, _x) => {
+    const bubble = document.getElementById('selection-bubble');
+    bubble.style.top = (_r.bottom - _relative.top) + 'px'; //this will place ele below the selection
+    bubble.style.left = _x;
 };
