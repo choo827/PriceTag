@@ -7,35 +7,36 @@ document.addEventListener('mouseup', (event) => {
     const select = window.getSelection().toString();
     const condition = /(^[£€$￥¥₩￦]\s*[0-9,.]*$)|(^[0-9,.]*[€원]$)/;
 
-    if (select != ('' || undefined)) {
-        console.log(select.toString());
+    if (select !== '' && select !== undefined) {
         const filteredSelect = filtering(select, condition);
-
         const r = window.getSelection().getRangeAt(0).getBoundingClientRect();
         const relative = document.body.parentNode.getBoundingClientRect();
         const x = event.clientX + 'px';
 
         let currency, dp;
-        if (filteredSelect.charAt(0).match(/[0-9]/g)) {
-            // 1000원
-            currency = findCurrency(filteredSelect.substr(filteredSelect.length - 1));
-            dp = filteredSelect.slice(0, -1);
-            convertCur(filteredSelect.slice(0, -1)
-                .replace(/,/g, ""), currency)
-                .then(data => {
-                    createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
-                    positionBubble(r, relative, x);
-                });
-        } else {
-            // $10000
-            currency = findCurrency(filteredSelect.charAt(0));
-            dp = filteredSelect.substring(1);
-            convertCur(filteredSelect.substring(1)
-                .replace(/,/g, ""), currency)
-                .then(data => {
-                    createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
-                    positionBubble(r, relative, x);
-                });
+        try {
+            if (filteredSelect.charAt(0).match(/[0-9]/g)) {
+                // 1000원
+                currency = findCurrency(filteredSelect.substr(filteredSelect.length - 1));
+                dp = filteredSelect.slice(0, -1);
+                convertCur(filteredSelect.slice(0, -1)
+                    .replace(/,/g, ""), currency)
+                    .then(data => {
+                        createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
+                        positionBubble(r, relative, x);
+                    });
+            } else {
+                // $10000
+                currency = findCurrency(filteredSelect.charAt(0));
+                dp = filteredSelect.substring(1);
+                convertCur(filteredSelect.substring(1)
+                    .replace(/,/g, ""), currency)
+                    .then(data => {
+                        createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
+                        positionBubble(r, relative, x);
+                    });
+            }
+        } catch (e) {
         }
     } else {
         removeBubble();
@@ -65,11 +66,13 @@ const findCurrency = (rawPrice) => {
 };
 
 const filtering = (text, condition) => {
-    text.trim()
-        .match(condition).toString()
-        .replace(/(\s*)/g, "");
+    try {
+        text.trim().match(condition).toString()
+            .replace(/(\s*)/g, "");
 
-    return text;
+        return text;
+    } catch (e) {
+    }
 };
 
 const convertCur = (price, currency) => {
