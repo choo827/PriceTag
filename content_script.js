@@ -1,9 +1,9 @@
-let myCurency;
-chrome.storage.sync.get((item) => {
-    myCurency = item.defaultCurrency;
-});
-
 document.addEventListener('mouseup', (event) => {
+    let myCurrency;
+    chrome.storage.sync.get((item) => {
+        myCurrency = item.defaultCurrency;
+    });
+
     const select = window.getSelection().toString();
     const condition = /(^[£€$￥¥₩￦]\s*[0-9,.]*$)|(^[0-9,.]*[€원]$)/;
 
@@ -22,7 +22,7 @@ document.addEventListener('mouseup', (event) => {
                 convertCur(filteredSelect.slice(0, -1)
                     .replace(/,/g, ""), currency)
                     .then(data => {
-                        createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
+                        createBubble(currency, dp, myCurrency, data.toLocaleString(), currency);
                         positionBubble(r, relative, x);
                     });
             } else {
@@ -32,7 +32,7 @@ document.addEventListener('mouseup', (event) => {
                 convertCur(filteredSelect.substring(1)
                     .replace(/,/g, ""), currency)
                     .then(data => {
-                        createBubble(currency, dp, myCurency, data.toLocaleString(), currency);
+                        createBubble(currency, dp, myCurrency, data.toLocaleString(), currency);
                         positionBubble(r, relative, x);
                     });
             }
@@ -76,10 +76,14 @@ const filtering = (text, condition) => {
 };
 
 const convertCur = (price, currency) => {
+    let myCurrency;
+    chrome.storage.sync.get((item) => {
+        myCurrency = item.defaultCurrency;
+    });
     const dataURL = 'https://api.exchangeratesapi.io/latest?base=' + currency;
     return fetch(dataURL).then((res) => {
         return res.json().then(data => {
-            return data.rates[myCurency] * price;
+            return data.rates[myCurrency] * price;
         });
     }).catch(err => console.log(err));
 };
